@@ -17,8 +17,10 @@ type Rewards = {
 }
 
 export const useVaultRates = (): SWR & Rates => {
-  const { data, error } = useSWR(`${process.env.API_URL}/vaults`, fetcher)
+  // const { data, error } = useSWR(`${process.env.API_URL}/vaults`, fetcher)
 
+  const data = {"lastDistribution":1627520493,"rates":{"0x83C2D4F52FbA1167F164ACddFCBD6710dDB27192":4.206300189715499,"0xc8f2E91dC9d198edEd1b2778F6f2a7fd5bBeac34":12.107533698000001,"0x41D079ce7282d49bf4888C71B5D9E4A02c371F9B":5.8053468213935995,"0x2dCdCA085af2E258654e47204e483127E0D8b277":5.8109493273984}}
+  const error = false
   return {
     lastDistribution: data ? new Date(data.lastDistribution * 1000) : undefined,
     rates: data?.rates,
